@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Profile Detection</title>
+</head>
+<body>
+<div class="container mt-5">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+        <h2>Twitter Fake Profile Detection</h2>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Twitter Username</label>
+          <input name="Twitter_username" type="text" required class="form-control">
+        </div> 
+        <button type="submit" class="btn btn-success">Search</button>
+      </form>
+      <hr>
+      {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+        <div {% if message.tags %} class="{{ message.tags }}" role="alert"{% endif %}>
+          {{ message }}
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+        {% comment %} <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Username</th>
+              <th scope="col">Screen_name</th>
+              <th scope="col">statuses_count</th>
+              <th scope="col">followers_count</th>
+              <th scope="col">friends_count</th>
+              <th scope="col">favourites_count</th>
+              <th scope="col">listed_count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{acc.username}}</td>
+              <td>{{acc.screen_name}}</td>
+              <td>{{acc.statuses_count}}</td>
+              <td>{{acc.followers_count}}</td>
+              <td>{{acc.friends_count}}</td>
+              <td>{{acc.favourites_count}}</td>
+              <td>{{acc.listed_count}}</td>
+              
+
+            </tr>
+          </tbody>
+        </table> {% endcomment %}
+
+        statuses_count : {{statuses_count}}<br>
+        followers_count : {{followers_count}}<br>
+        friends_count : {{friends_count}}<br>
+        favourites_count : {{favourites_count}}<br>
+        listed_count : {{listed_count}}<br>
+</div>  
+</body>
+</html>
